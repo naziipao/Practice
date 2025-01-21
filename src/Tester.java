@@ -1,35 +1,29 @@
 import java.util.Scanner;
 public class Tester {
     public static void main(String []args){
-        Scanner in = new Scanner(System.in);
-        System.out.println("Enter the number of query:");
-        int t=in.nextInt();
-        int [][] arr1 = new int[t][3];
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter the number of test cases:");
+        int t = sc.nextInt();
 
         for(int i=0;i<t;i++){
-            System.out.println("Enter the value of a:");
-            int a = in.nextInt();
-            System.out.println("Enter the value of b:");
-            int b = in.nextInt();
-            System.out.println("Enter the value of n:");
-            int n = in.nextInt();
+            try{
+                long x=sc.nextLong();
+                System.out.println(x+" can be fitted in:");
+                if(x>=-128 && x<=127) {
+                    System.out.println("* byte");
+                }
+                if(x>=-32768 && x<=32767){
+                    System.out.println("* short");
+                }
+                if(x>=-2147483648 && x<=2147483647){
+                    System.out.println("* int");
+                }
+                System.out.println("* long");
 
-            arr1[i][0] = a;
-            arr1[i][1] = b;
-            arr1[i][2] = n;
-        }
-
-        int num = 0;
-        for(int i = 0; i <t ; i++) {
-            //Calculating each query
-            System.out.print("Query " + (i+1) + ":      ");
-            for (int j = 0; j<arr1[i][2];j++) {
-                num = num + (int) Math.pow(2, j);
-                System.out.print((arr1[i][0]+num * arr1[i][1])+"      ");
             }
-
-            System.out.println();
-            num = 0;   //Resetting the value of num for next query
+            catch(Exception e){
+                System.out.println(sc.next()+" can't be fitted anywhere.");
+            }
         }
     }
 }
